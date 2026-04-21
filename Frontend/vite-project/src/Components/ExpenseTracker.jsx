@@ -20,7 +20,7 @@ const ExpenseTracker = () => {
     const fetchExpenses = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get("http://localhost:3000/api/expenses");
+        const { data } = await axios.get("https://expense-tracker-backend-4af3.onrender.com/api/expenses");
         setExpenses(data.data);
       } catch (err) {
         flash(err.response?.data?.error || "Failed to load expenses.", "err");
@@ -48,7 +48,7 @@ const ExpenseTracker = () => {
     const idempotencyKey = uuidv4(); // ✅ generated once per submit click
 
     try {
-      const { data } = await axios.post("http://localhost:3000/api/expenses", {
+      const { data } = await axios.post("https://expense-tracker-backend-4af3.onrender.com/api/expenses", {
         amount: parseFloat(amount),
         category,
         date,
